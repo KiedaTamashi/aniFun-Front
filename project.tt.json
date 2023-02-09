@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "anime_v1",
+  "description": "anime fun v1.0",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}
