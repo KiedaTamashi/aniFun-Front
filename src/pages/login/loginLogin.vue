@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Image } from '@tarojs/components';
 import {ref} from "vue"
 
 const emit = defineEmits<{

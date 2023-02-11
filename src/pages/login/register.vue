@@ -12,6 +12,7 @@ const showPsd = ref(false)
 function submitLogin() {
     // todo take username & psd
     try {
+      console.log(`showPsd ${showPsd}`)
       console.log(`submit login ${[userName.value,psd.value]} in loginLogin.vue`)
       emit("submitLoginMsg",userName.value,psd.value)
     } catch (error) {
@@ -30,11 +31,11 @@ function submitLogin() {
         </view>
         <view class="medium_title">AnimeFUN</view>
         <view class="text">Log in with Email</view>
-        <input v-model="userName" class="box" placeholder="username" placeholder-style="color:red;" @input="event => userName = event.target.value" />
-        <input v-model="psd" placeholder="password" class="box" :password="!showPsd" @input="event => psd = event.target.value" />
+        <input v-model="userName" class="box" placeholder="username" placeholder-class="color:red;"  />
+        <input v-model="psd" placeholder="password" class="box" :password="!showPsd" />
         <view class="wrapper">
           <!-- <img src="/assets/55559cb0fe8493d78acb014a8cc2156e.png" alt="alt text" class="icon" /> -->
-          <checkbox class="showPsdBox" checked="false" @click="showPsd = !showPsd" ></checkbox><view class="text1">show password</view>
+          <checkbox class="showPsdBox" :checked="showPsd" ><text class="text1">show password</text></checkbox>
           <view class="text2">Forgot?</view>
         </view>
         <button class="btn" @click="submitLogin"><span class="btn__text">Log In</span></button>
