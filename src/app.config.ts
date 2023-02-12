@@ -7,20 +7,29 @@ export default defineAppConfig({
     "pages/community/community"
   ],
   tabBar: {
+    "backgroundColor": "#FBF3EF",
+    "borderStyle": "white",
     "list": [{
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "iconPath": "assets/icon/home.png",
+        "selectedIconPath": "assets/icon/home2.png",
+        "text": "",
         },{
         "pagePath": "pages/discover/discover",
-        "text": "发现"
-    },{
-        "pagePath": "pages/myself/myself",
-        "text": "我的"
+        "iconPath": "assets/icon/discover.png",
+        "selectedIconPath": "assets/icon/discover2.png",
+        "text": ""
     },{
       "pagePath": "pages/community/community",
-      "text": "我的"
+      "iconPath": "assets/icon/community.png",
+      "selectedIconPath": "assets/icon/community2.png",
+      "text": "",
+    },{
+        "pagePath": "pages/myself/myself",
+        "iconPath": "assets/icon/myself.png",
+        "selectedIconPath": "assets/icon/myself2.png",
+        "text": ""
     }],
-    "color" : "#56abe4"
 },
   window: {
     backgroundTextStyle: 'light',
