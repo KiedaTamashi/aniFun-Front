@@ -50,6 +50,9 @@ function getLoginMsg(msg:number, p:string[]) {
   }
 }
 
+function register2Login() {
+  loginPageStatus.value = 1
+}
 </script>
 
 <template>
@@ -61,7 +64,7 @@ function getLoginMsg(msg:number, p:string[]) {
       <loginLogin @submitLoginMsg="(p1:string,p2:string)=>getLoginMsg(3,[p1,p2])"> </loginLogin>
   </view>
   <view v-if="loginPageStatus==2">
-      <register> </register>
+      <register @jump2-login="()=>register2Login()" @register-and-login="(p1:string,p2:string)=>getLoginMsg(3,[p1,p2])"> </register>
   </view>
 </template>
 
@@ -106,7 +109,7 @@ $font_type_2: 300 18px/1.11 'Roboto', Helvetica, Arial, serif;
 .image9 {
   height: min-content;
   aspect-ratio: 0.88;
-  background: url('../../../assets/images/indexLogo.svg') center center / cover no-repeat;
+  background: url('../../assets/images/indexLogo.svg') center center / cover no-repeat;
   position: relative;
   min-height: 0px;
   margin: 0px 7px;

@@ -1,8 +1,12 @@
 
 <script setup lang="ts">
 import loginV1 from './loginV1.vue'
-import home from "./home.vue"
+// import main from '../home/home.vue'
 import { ref, computed} from 'vue';
+import AES from "crypto-js/aes";
+import CryptoJS from "crypto-js";
+import Taro from '@tarojs/taro';
+import consts from '../const'
 //variable
 // const loginPageStatus = ref('init') // 0-init, 1-login, 2-register
 // const state = ref('init')
@@ -23,6 +27,22 @@ function getWelComePageInfo(loginInfo:{
   // loginPageStatus.value = status
   // state = 'online'
   // console.log("login status: "+ state.value)
+  // simple safety.
+  loginInfo.psd = AES.encrypt(loginInfo.psd, CryptoJS.enc.Utf8.parse(consts.aesKey),{
+    mode: CryptoJS.mode.ECB,
+    padding: CryptoJS.pad.Pkcs7
+  }).toString()
+  console.log(loginInfo.psd)
+
+  Taro.reLaunch({
+    url: `../home/home?username=${loginInfo.username}&psd=${loginInfo.psd}`,
+    success: function () {
+      // 通过eventChannel向被打开页面传送数据
+      console.log("success navigate, login username "+ loginInfo.username)
+      // res.eventChannel.emit('acceptAccountFromIndex', { loginInfo: loginInfo })
+    },
+  }
+)
 }
 
 </script>
@@ -31,9 +51,9 @@ function getWelComePageInfo(loginInfo:{
   <view v-if="needLogin">
     <loginV1 @submitLoginInfo="(msg) => getWelComePageInfo(msg)"/>
   </view>
-  <view v-else>
-    <home />
-  </view>
+  <!-- <view v-else>
+    <main />
+  </view> -->
 </template>
 
 

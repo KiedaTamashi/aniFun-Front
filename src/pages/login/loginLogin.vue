@@ -11,28 +11,29 @@ const showPsd = ref(false)
 function submitLogin() {
     // todo take username & psd
     try {
+      console.log(`showPsd: ${showPsd.value}`)
       console.log(`submit login ${[userName.value,psd.value]} in loginLogin.vue`)
       emit("submitLoginMsg",userName.value,psd.value)
     } catch (error) {
       console.log(error)
     }
 }
+
 </script>
 
 <template>
   <view class="register root">
-    <cover-image src="../../../assets/images/Group35.svg" alt="alt text" class="decorator" />
     <view class="flexCol">
       <view class="flexCol1">
         <view class="flexCol1__item">
-          <Image src="../../../assets/images/ice-cream.svg" alt="alt text" class="image4" />
+          <image src="../../assets/images/ice-cream.svg" class="image4" />
         </view>
         <view class="medium_title">AnimeFUN</view>
-        <input v-model="userName" class="box" placeholder="username" placeholder-style="color:red;" @input="event => userName = event.target.value" />
-        <input v-model="psd" placeholder="password" class="box" :password="!showPsd" @input="event => psd = event.target.value" />
+        <input v-model="userName" class="box" placeholder="username" placeholder-style="color:red;"  />
+        <input v-model="psd" placeholder="password" class="box" :password="!showPsd" />
         <view class="wrapper">
-          <!-- <img src="/assets/55559cb0fe8493d78acb014a8cc2156e.png" alt="alt text" class="icon" /> -->
-          <checkbox class="showPsdBox" checked="false" @click="showPsd = !showPsd" ></checkbox><view class="text1">show password</view>
+          <!-- <img src="/assets/55559cb0fe8493d78acb014a8cc2156e.png" alt="alt text" class="icon" />    无法绑定showPsd不知道为啥 todo  <view class="text1">show password</view> -->
+          <checkbox class="showPsdBox" value="show password" :checked="showPsd" @click="()=>showPsd = !showPsd" >show password</checkbox>
           <view class="text2">Forgot?</view>
         </view>
         <button class="btn" @click="submitLogin"><span class="btn__text">Log In</span></button>
@@ -45,12 +46,12 @@ function submitLogin() {
       </view>
       <view class="paragraph1">not a member? Sign up now</view>
     </view>
+    <image src="../../assets/images/Group35.svg" class="decorator" />
   </view>
 </template>
 
 <style scoped lang="scss">
 @use "./utils.scss" as *;
-@use "./mycss.scss" as *;
 
 $color_type_0: rgb(0, 0, 0);
 $color_type_1: rgb(245, 255, 246);
@@ -103,7 +104,7 @@ flex-grow: 0;
   bottom: -23px;
   left: -9px;
   right: -32px;
-  background: url('../../../assets/images/Group35.svg') center center / cover no-repeat;
+  background: url('../../assets/images/Group35.svg') center center / cover no-repeat;
 }
 .flexCol {
   @include flex-column;
@@ -133,7 +134,7 @@ flex-grow: 0;
   min-height: 0px;
   min-width: 100px;
   margin: 0px auto;
-  background: url('../../../assets/images/ice-cream.svg') center center / cover no-repeat;
+  background: url('../../assets/images/ice-cream.svg') center center / cover no-repeat;
 }
 .medium_title {
   @include h-center-content;

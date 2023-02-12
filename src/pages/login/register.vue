@@ -3,42 +3,50 @@ import { Image } from '@tarojs/components';
 import {ref} from "vue"
 
 const emit = defineEmits<{
-  (e: 'submitLoginMsg', usrname: string, password: string): void
+  (e: 'registerAndLogin', usrname: string, password: string): void
+  (e: 'jump2-login'): void
 }>()
 const userName = ref('')
 const psd = ref('')
 const showPsd = ref(false)
 
-function submitLogin() {
-    // todo take username & psd
+function submitRegister() {
+    // todo register username & psd. next auto login.
     try {
       console.log(`showPsd ${showPsd}`)
-      console.log(`submit login ${[userName.value,psd.value]} in loginLogin.vue`)
-      emit("submitLoginMsg",userName.value,psd.value)
+      console.log(`submit login ${[userName.value,psd.value]} in loginRegister.vue`)
+      emit("registerAndLogin",userName.value,psd.value)
     } catch (error) {
       console.log(error)
     }
 }
+function jumpLogin() {
+    console.log(`jump 2 login now..`)
+    emit('jump2-login')
+}
+
 </script>
 
 <template>
   <view class="register root">
-    <cover-image src="../../../assets/images/Group35.svg" alt="alt text" class="decorator" />
+    <image src="../../assets/images/Group35.svg"  class="decorator" />
     <view class="flexCol">
       <view class="flexCol1">
         <view class="flexCol1__item">
-          <Image src="../../../assets/images/ice-cream.svg" alt="alt text" class="image4" />
+          <image src="../../assets/images/ice-cream.svg" class="image4" />
         </view>
         <view class="medium_title">AnimeFUN</view>
-        <view class="text">Log in with Email</view>
-        <input v-model="userName" class="box" placeholder="username" placeholder-class="color:red;"  />
+        <view class="text" @click="jumpLogin" hover-style="color:red;">Log in with Email</view>
+        <input v-model="userName" class="box" placeholder="username" placeholder-style="color:red;"  />
         <input v-model="psd" placeholder="password" class="box" :password="!showPsd" />
         <view class="wrapper">
           <!-- <img src="/assets/55559cb0fe8493d78acb014a8cc2156e.png" alt="alt text" class="icon" /> -->
-          <checkbox class="showPsdBox" :checked="showPsd" ><text class="text1">show password</text></checkbox>
+          <checkbox class="showPsdBox" :checked="showPsd" value="show password"><text class="text1">show password</text></checkbox>
           <view class="text2">Forgot?</view>
         </view>
-        <button class="btn" @click="submitLogin"><span class="btn__text">Log In</span></button>
+        <!-- <view class="btn"> -->
+          <button class="btn" @click="submitRegister"><text class="btn__text">SignUp</text></button>
+        <!-- </view> -->
       </view>
       <view class="paragraph_box">
         <view class="paragraph"
@@ -53,7 +61,6 @@ function submitLogin() {
 
 <style scoped lang="scss">
 @use "./utils.scss" as *;
-@use "./mycss.scss" as *;
 
 $color_type_0: rgb(0, 0, 0);
 $color_type_1: rgb(245, 255, 246);
@@ -71,6 +78,10 @@ $font_type_2: 400 16px/1.25 'Roboto', Helvetica, Arial, serif;
 $font_type_3: 400 14px/1.42 'Roboto', Helvetica, Arial, serif;
 $font_type_4: 1em/1.42 'Roboto', Helvetica, Arial, serif;
 $font_type_5: 700 1em/1.42 'Roboto', Helvetica, Arial, serif;
+
+.hoverClass {
+  color: #ff1212 ;
+}
 
 .phstyle {
   color: #ff1212 ;
@@ -106,7 +117,6 @@ flex-grow: 0;
   bottom: -23px;
   left: -9px;
   right: -32px;
-  background: url('../../../assets/images/Group35.svg') center center / cover no-repeat;
 }
 .flexCol {
   @include flex-column;
@@ -136,7 +146,7 @@ flex-grow: 0;
   min-height: 0px;
   min-width: 100px;
   margin: 0px auto;
-  background: url('../../../assets/images/ice-cream.svg') center center / cover no-repeat;
+  background: url('../../assets/images/ice-cream.svg') center center / cover no-repeat;
 }
 .medium_title {
   @include h-center-content;

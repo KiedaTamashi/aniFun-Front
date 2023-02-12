@@ -14,17 +14,17 @@ function init2Register(){
 
 
 <template>
-      <view class="init-login root">
-      <view class="flexCol">
-        <view class="flexCol1">
-          <view class="flexCol1__item"><view class="image9"></view></view>
-          <view class="medium_title">AnimeFUN</view>
-          <view class="highlights1">Find Anime Find Fun!</view>
+      <view class='init-login root'>
+      <view class='flexCol'>
+        <view class='flexCol1'>
+          <view class='flexCol1__item'><image class='image9' src="../../assets/images/indexLogo.svg"></image></view>
+          <view class='medium_title'>AnimeFUN</view>
+          <view class='highlights1'>Find Anime Find Fun!</view>
         </view>
-        <view class="box">
-          <view class="flexCol2">
-            <button class="btn" @click="init2Register"><span class="btn__text">SignUp</span></button
-            ><button class="btn1" @click="init2Login"><span class="btn__text1">LogIn</span></button>
+        <view class='box'>
+          <view class='flexCol2'>
+            <button class='btn' @click='init2Register'><text class='btn__text'>SignUp</text></button>
+            <button class='btn1' @click='init2Login'><text class='btn__text1'>LogIn</text></button>
           </view>
         </view>
       </view>
@@ -33,7 +33,7 @@ function init2Register(){
 </template>
 
 <style scoped lang="scss">
-@use "./utils.scss" as *;
+@use './utils.scss' as *;
 
 $color_type_0: rgb(0, 0, 0);
 $color_type_1: rgb(245, 255, 246);
@@ -73,7 +73,6 @@ $font_type_2: 300 18px/1.11 'Roboto', Helvetica, Arial, serif;
 .image9 {
   height: min-content;
   aspect-ratio: 0.88;
-  background: url('../../../assets/images/indexLogo.svg') center center / cover no-repeat;
   position: relative;
   min-height: 0px;
   margin: 0px 7px;
