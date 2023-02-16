@@ -12,6 +12,10 @@ import consts from '../const'
 // const state = ref('init')
 const userName = ref("")
 const psd = ref("")
+const namespace = ref({
+  username: "",
+  psd: "",
+})
 
 const needLogin = computed(()=>{
   return userName.value == "" || psd.value == ""
@@ -22,8 +26,6 @@ function getWelComePageInfo(loginInfo:{
   psd: string,
 }){
   console.log("getWelComePageInfo: "+ loginInfo)
-  userName.value = loginInfo.username
-  psd.value = loginInfo.psd
   // loginPageStatus.value = status
   // state = 'online'
   // console.log("login status: "+ state.value)
@@ -33,6 +35,10 @@ function getWelComePageInfo(loginInfo:{
     padding: CryptoJS.pad.Pkcs7
   }).toString()
   console.log(loginInfo.psd)
+  namespace.value = {
+    username: loginInfo.username,
+    psd: loginInfo.psd
+  }
 
   Taro.reLaunch({
     url: `../home/home?username=${loginInfo.username}&psd=${loginInfo.psd}`,
@@ -42,7 +48,7 @@ function getWelComePageInfo(loginInfo:{
       // res.eventChannel.emit('acceptAccountFromIndex', { loginInfo: loginInfo })
     },
   }
-)
+  )
 }
 
 </script>
