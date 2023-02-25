@@ -45,7 +45,7 @@ function clickRankingButton(tabName:string) {
     position: relative;
     width: fit-content;
     opacity: 0.8;
-    padding: 20px;
+    padding-top: 20px;
 
     .ranking-button {
         width: 72*2px;

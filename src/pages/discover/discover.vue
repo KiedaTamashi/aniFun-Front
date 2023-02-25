@@ -6,14 +6,14 @@ import discoverContent from "./discoverContent.vue"
 import {ref} from "vue"
 const selectedType = ref("Animation")
 const selectedRanking = ref("Time")
-
+const windowLength = ref(533*2)
 </script>
 
 
 <template>
     <cover-view class="cover"> 
         <cover-view class="rectangle-66"></cover-view>
-        <cover-view class="rectangle-67"></cover-view>
+        <cover-view class="rectangle-67" :style="{height:windowLength}"></cover-view>
     </cover-view>
 
     <view class="discover-main">

@@ -1,38 +1,49 @@
 <script setup lang="ts">
 import { useReachBottom } from '@tarojs/taro';
-import { onMounted} from 'vue';
-import {IDiscoverImage,IDiscoverState} from './discoverType'
-import contentItem from './contentItem.vue'
+import { ref, onMounted} from 'vue'; //onMounted
+import {IDiscoverImage,IDiscoverRow} from './discoverType'
+// import contentItem from './contentItem.vue'
+import contentRow from './contentRow.vue';
+
+const scrollLength = ref(533*2)
+
+let initRowNum = ref(3)
+let currRowNum = ref(0)
+let nextImgId = ref(0)
 
 const props = defineProps({
     selectedType: String,
     selectedRanking: String,
 
 })
-const initSampleImg:IDiscoverImage[] = [{
+const initSampleImg = ref<IDiscoverImage>({
     id: 0,
-    url: "../../assets/images/discover_item_sample.png",
+    url: "../../assets/images/discover-item-sample.png",
     name: "测试数据",
     tag: ["漫改","励志","温情"]
-}]
+})
 
-const contentBoxState:IDiscoverState = {
-    imgNum: 0,
-    dataList: initSampleImg
-}
-
+const contentRows = ref<IDiscoverRow[]>([])
 
 onMounted(() => {
     console.log(`discoverContents selectedType: ${props.selectedType}, selectedRanking: ${props.selectedRanking}`)
-    for (let i=1;i<9;i++) {
-        // todo 使用api加载
-        initSampleImg.push({
-            id: i,
-            url: "../../assets/images/discover_item_sample.png",
-            name: "测试数据",
-            tag: ["漫改","励志","温情"]
-        })
-        contentBoxState.imgNum += 1
+    for (let i=1;i<=initRowNum.value;i++) {
+        currRowNum.value += 1
+        let currRow:IDiscoverRow = {
+            rowId: currRowNum.value,
+            imgNum: 0,
+            rowList: [],
+        }
+        for (let j=0;j<3;j++) {
+            currRow.rowList.push({
+                id: nextImgId.value,
+                url: initSampleImg.value.url,
+                name: initSampleImg.value.name,
+                tag: initSampleImg.value.tag, //todo dynamic
+            })
+            nextImgId.value += 1
+        }
+        contentRows.value.push(currRow)
     }
 })
 
@@ -41,49 +52,51 @@ onMounted(() => {
 // })
 
 useReachBottom(() => {
-  console.log('onReachBottom')
+    console.log('onReachBottom...load more data')
   // todo 加载更多的信息，默认一行
+    currRowNum.value += 1
+    let currRow:IDiscoverRow = {
+        rowId: currRowNum.value,
+        imgNum: 0,
+        rowList: [],
+    }
+    for (let j=0;j<3;j++) {
+        currRow.rowList.push({
+            id: nextImgId.value,
+            url: initSampleImg.value.url,
+            name: initSampleImg.value.name,
+            tag: initSampleImg.value.tag, //todo dynamic
+        })
+        nextImgId.value += 1
+    }
+    contentRows.value.push(currRow)
 })
 
-
-// .content-box {
-//             /* Auto layout */
-//             display: flex;
-//             flex-direction: row;
-//             flex-wrap: wrap;
-//             align-items: flex-start;
-//             padding: 0px;
-//             gap: 10px;
-
-//             width: 346px;
-//             height: 171px;
-//         }
 </script>
 
 <template>
-    <view class="contents-box">
-        contents-box
-        <contentItem :box-item="contentBoxState.dataList[0]"> </contentItem>
-        <!-- <contentItem v-for="item in contentBoxState.dataList"
-        :key="item.id"
-        :box-item="item"
-        >
-        </contentItem> -->
-    
+    <view class="contents-box" :style="{height: scrollLength}">
+        <contentRow v-for="(row,_) in contentRows"
+        :key="row.rowId" :row-item="row">
+        </contentRow>
     </view>
-
 </template>
 
 <style lang="scss">
     .contents-box {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
+        align-items: center;
+        
+        padding: 10px;
         gap: 32px;
-        width: 366px;
-        height: 533px;
+
+        position: absolute;
+        width: 367*2px;
+        left: 4px;
+        top: 326px;
         overflow-y: scroll;
+        background-color: #FBF3EF;
     }
 </style>
 

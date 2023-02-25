@@ -4,7 +4,9 @@ export interface IDiscoverImage {
     name: string
     tag: string[]
 }
-export interface IDiscoverState {
+
+export interface IDiscoverRow {
+    rowId: number
     imgNum: number
-    dataList: IDiscoverImage[]
+    rowList: IDiscoverImage[]
 }
