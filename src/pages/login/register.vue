@@ -28,7 +28,42 @@ function jumpLogin() {
 </script>
 
 <template>
-  <view class="register root">
+  <view class="login">
+    <image src="../../assets/images/Group35.svg" class="decorator" ></image>
+    <view class="logo-login">
+      <image class="image4" src="../../assets/images/ice-cream.svg" />
+      <view class="text4"><text class="logo-text">AnimeFUN</text></view>
+    </view>
+    <view class="login-box">
+      <view class="something" @click="jumpLogin" hover-style="color:red;">Log in with Email</view>
+      <view class="input-box">
+        <view class="username-box">
+          <input v-model="userName" class="box" placeholder="username" placeholder-class="ph-class"  />
+        </view>
+        <view class="psd-box">
+          <input v-model="psd" placeholder="password" placeholder-class="ph-class" class="box" :password="!showPsd" />
+        </view>
+      </view>
+    </view>
+    <view class="options">
+      <view class="cclick-box">
+        <!-- <checkbox class="cclick" :value="showPsd" :checked="showPsd" @click="()=>showPsd = !showPsd" ></checkbox>
+        <text class="cclicktext">show password</text> -->
+      </view>
+      <view class="text2"></view>
+    </view>
+    <button class="sbtn" @click="submitRegister"><text class="sbtn-text">Sign Up</text></button>
+    <view class="paragraph">
+      <text class="para1">
+        by Logging in, you can easily find your interested anime
+      </text>
+      <text class="para2">
+        not a member? Sign up now!
+      </text>
+    </view>
+  </view>
+
+  <!-- <view class="register root">
     <image src="../../assets/images/Group35.svg"  class="decorator" />
     <view class="flexCol">
       <view class="flexCol1">
@@ -40,268 +75,322 @@ function jumpLogin() {
         <input v-model="userName" class="box" placeholder="username" placeholder-style="color:red;"  />
         <input v-model="psd" placeholder="password" class="box" :password="!showPsd" />
         <view class="wrapper">
-          <!-- <img src="/assets/55559cb0fe8493d78acb014a8cc2156e.png" alt="alt text" class="icon" /> -->
-          <checkbox class="showPsdBox" :checked="showPsd" value="show password"><text class="text1">show password</text></checkbox>
+         <checkbox class="showPsdBox" :checked="showPsd" value="show password"><text class="text1">show password</text></checkbox>
           <view class="text2">Forgot?</view>
         </view>
-        <!-- <view class="btn"> -->
           <button class="btn" @click="submitRegister"><text class="btn__text">SignUp</text></button>
-        <!-- </view> -->
       </view>
-      <view class="paragraph_box">
-        <view class="paragraph"
-          ><view class="paragraph_span0">by Logging in, you agree to the <br /></view
-          ><view class="paragraph_span1">Privacy Policy &amp; Terms of Service</view></view
-        >
-      </view>
-      <view class="paragraph1">not a member? Sign up now</view>
+      
     </view>
-  </view>
+  </view> -->
 </template>
 
-<style scoped lang="scss">
-@use "./utils.scss" as *;
-
-$color_type_0: rgb(0, 0, 0);
-$color_type_1: rgb(245, 255, 246);
-$color_type_2: rgb(255, 255, 255);
-$color_type_3: rgb(33, 62, 35);
-$color_type_4: rgb(85, 141, 91);
-$color_type_5: rgb(95, 98, 96);
-
-$border_radius_type_0: 10px 10px 10px 10px;
-$border_radius_type_1: 20px 20px 20px 20px;
-
-$font_type_0: 500 24px/0.83 'Roboto', Helvetica, Arial, serif;
-$font_type_1: 400 24px/0.83 'Roboto', Helvetica, Arial, serif;
-$font_type_2: 400 16px/1.25 'Roboto', Helvetica, Arial, serif;
-$font_type_3: 400 14px/1.42 'Roboto', Helvetica, Arial, serif;
-$font_type_4: 1em/1.42 'Roboto', Helvetica, Arial, serif;
-$font_type_5: 700 1em/1.42 'Roboto', Helvetica, Arial, serif;
-
-.hoverClass {
-  color: #ff1212 ;
-}
-
-.phstyle {
-  color: #ff1212 ;
-}
-
-.showPsdBox {
-  width: 11px;
-height: 11px;
-
-/* dark green */
-/* Inside auto layout */
-
-flex: none;
-order: 0;
-flex-grow: 0;
-}
-
-.root {
-  @include flex-column;
-  background-color: $color_type_1;
-  position: relative;
-  overflow: hidden;
-  min-height: 0px;
+<style lang="scss">
+.login {
+  background: #F5FFF6;
 }
 .decorator {
-  width: calc(100% - -41px);
-  height: 341px;
-  aspect-ratio: 1.22;
-  vertical-align: top;
-  object-fit: cover;
-  object-position: center center;
   position: absolute;
-  bottom: -23px;
-  left: -9px;
-  right: -32px;
-}
-.flexCol {
-  @include flex-column;
-  width: 79.47%;
-  position: relative;
-  flex-grow: 1;
-  min-height: 0px;
-  margin: 69px 11.2% 51px 9.33%;
-}
-.flexCol1 {
-  @include flex-column;
-  position: relative;
-  min-height: 0px;
-}
-.flexCol1__item {
-  @include flex-column;
-  position: relative;
-}
-.image4 {
-  width: 100px;
-  height: min-content;
-  aspect-ratio: 0.87;
-  vertical-align: top;
-  object-fit: cover;
-  object-position: center center;
-  position: relative;
-  min-height: 0px;
-  min-width: 100px;
-  margin: 0px auto;
-  background: url('../../assets/images/ice-cream.svg') center center / cover no-repeat;
-}
-.medium_title {
-  @include h-center-content;
-  font: $font_type_0;
-  color: $color_type_0;
-  text-align: center;
-  letter-spacing: -0.5px;
-  width: 122px;
-  position: relative;
-  min-height: 0px;
-  min-width: 122px;
-  margin: 20px auto 0px;
-}
-.text {
-  @include h-center-content;
-  font: $font_type_3;
-  color: $color_type_3;
-  text-align: center;
-  letter-spacing: 0px;
-  width: 106px;
-  position: relative;
-  min-height: 0px;
-  min-width: 106px;
-  margin: 28px 0px 0px;
-}
-.box {
-  @include flex-column;
-  border-radius: $border_radius_type_0;
-  outline: 1px solid rgb(33, 63, 35);
-  outline-offset: -1px;
-  position: relative;
-  min-height: 0px;
-  margin: 12px 0px 0px;
-}
-.highlights1 {
-  @include font-face($font_type_2, $color_type_5, -0.5px);
-  width: 12.42%;
-  opacity: 0.5;
-  position: relative;
-  flex-grow: 1;
-  min-height: 0px;
-  margin: 13px 80.87% 12px 6.71%;
-}
-.highlights11 {
-  @include font-face($font_type_2, $color_type_5, -0.5px);
-  width: 22.48%;
-  opacity: 0.5;
-  position: relative;
-  flex-grow: 1;
-  min-height: 0px;
-  margin: 13px 70.81% 12px 6.71%;
-}
-.wrapper {
-  @include flex-column;
-  position: relative;
-  min-height: 0px;
-  margin: 20px 3px 0px 0px;
-}
-.icon {
-  width: 11px;
-  height: min-content;
-  aspect-ratio: 1;
-  vertical-align: top;
-  object-fit: cover;
-  object-position: center center;
-  position: absolute;
-  top: 5px;
-  min-height: 0px;
-  left: -1px;
-}
-.text1 {
-  @include h-center-content;
-  font: $font_type_3;
-  color: $color_type_3;
-  text-align: center;
-  letter-spacing: 0px;
-  width: 33.22%;
-  position: relative;
-  flex-grow: 1;
-  min-height: 0px;
-  margin: 0px 58.98% 0px 7.8%;
-}
-.text2 {
-  @include h-center-content;
-  font: $font_type_3;
-  color: $color_type_3;
-  text-align: center;
-  letter-spacing: 0px;
-  width: 48px;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  min-height: 0px;
-  right: -2px;
-}
-.btn {
-  @include flex-column;
-  background-color: $color_type_4;
-  border-radius: $border_radius_type_1;
-  outline: 0.20000000298023224px solid rgb(255, 255, 255);
-  outline-offset: -0.20000000298023224px;
-  cursor: pointer;
-  position: relative;
-  min-height: 0px;
-  margin: 51px 0px 0px;
-}
-.btn__text {
-  @include v-center-content;
-  justify-content: center;
-  font: $font_type_1;
-  color: $color_type_2;
-  text-align: center;
-  letter-spacing: -0.5px;
-  width: 79px;
-  position: relative;
-  flex-grow: 1;
-  min-height: 0px;
-  min-width: 79px;
-  margin: 11px auto;
-}
-.paragraph_box {
-  @include h-center-content;
-  width: 71.14%;
-  position: relative;
-  min-height: 43px;
-  margin: 157px 13.42% 0px 15.44%;
+  width: 416.3*2px;
+  height: 341.44*2px;
+  left: -18px;
+  top: 445*2px;
 }
 .paragraph {
-  font: $font_type_3;
-  color: $color_type_2;
-  text-align: center;
-  letter-spacing: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 44px;
+  
+  position: absolute;
+  width: 212*2px;
+  height: 85*2px;
+  left: 81*2px;
+  top: 632*2px;
+  .para1 {
+    width: 414px;
+    height: 86px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .para2 {
+    width: 414px;
+    height: 86px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
 }
-.paragraph_span0 {
-  font: $font_type_4;
-  color: $color_type_2;
-  font-style: normal;
-  letter-spacing: 0px;
+
+.logo-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 40px;
+  
+  position: absolute;
+  width: 244px;
+  height: 154.62*2px;
+  left: 126*2px;
+  top: 25*2px;
+  .image4 {
+    width: 100.66*2px;
+    height: 114.62*2px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .text4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 14px;
+    width: 244px;
+    height: 40px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    .logo-text {
+      width: 244px;
+      height: 40px;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 1000;
+      font-size: 48px;
+      line-height: 83%;
+      text-align: center;
+      letter-spacing: -1px;
+      color: #000000;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+  }
 }
-.paragraph_span1 {
-  font: $font_type_5;
-  color: $color_type_2;
-  font-style: normal;
-  letter-spacing: 0px;
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  position: absolute;
+  width: 79.466%;
+  height: 16.502%;
+  left: 9.33%;
+  top: 29%;
+  .something {
+    width: 215px;
+    height: 40px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    color: #213F23;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .input-box {
+    border-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    
+    width: 100%;
+    height: 76.119%;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    .username-box {
+      box-sizing: border-box;
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 44px 144px 44px 40px;
+    
+      width: 298*2px;
+      height: 45*2px;
+    
+      border: 2px solid #213F23;
+      border-radius: 20px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    .psd-box {
+      box-sizing: border-box;
+      /* Auto layout */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 44px 144px 44px 40px;
+    
+      width: 298*2px;
+      height: 45*2px;
+    
+      border: 2px solid #213F23;
+      border-radius: 20px;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+    .box {
+      width:  90%;
+      height: 20px;
+      /* Inside auto layout */
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    .ph-class {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 40px;
+      /* identical to box height, or 125% */
+
+
+      /* Text' */
+
+      color: #606360;
+
+      opacity: 0.5;
+    }
+  }
 }
-.paragraph1 {
-  @include h-center-content;
-  font: $font_type_3;
-  color: $color_type_2;
-  text-align: center;
-  letter-spacing: 0px;
-  width: 58.39%;
-  position: relative;
-  min-height: 0px;
-  margin: 22px auto 0px;
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 256px;
+
+  position: absolute;
+  width: 79.46%;
+  height: 2.46%;
+  left: 9.333%;
+  top: 50%;
+  .cclick-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 26px;
+
+    width: 41.356%;
+    height: 100%;
+    flex: 0 1 auto;
+    order: 0;
+    .cclicktext {
+      width: 196px;
+      height: 100%;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 143%;
+      text-align: center;
+      color: #213F23;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+    .cclick {
+      width: 11px;
+      height: 11px;
+      order: 0;
+      flex-grow: 0;
+      flex-shrink: 1;
+    }
+  }
+  .text4 {
+    width: 96px;
+    height: 90%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
+    color: #213F23;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+}
+.sbtn {
+  box-sizing: border-box;
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 44px 128px;
+  gap: 20px;
+
+  position: absolute;
+  width: 298*2px;
+  height: 42*2px;
+  left: 35*2px;
+  top: 433*2px;
+
+  background: #558D5B;
+  border: 0.4px solid #FFFFFF;
+  border-radius: 40px;
+  .sbtn-text {
+    width: 170px;
+    height: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 83%;
+    /* identical to box height, or 83% */
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
 }
 
 </style>

@@ -45,8 +45,10 @@ onMounted(() => {
         }
         contentRows.value.push(currRow)
     }
-})
 
+    
+})
+// todo 利用selected type计算
 // watch(props.selectedType, async(newType)=>{
 
 // })

@@ -20,7 +20,7 @@ onMounted(() => {
     <view class="content-item-class">
         <view class="image-class" :style="{backgroundImage: 'url('+props.boxItem.url+')'}"></view>
         <view class="text-name">{{props.boxItem.name}}</view>
-        <view class="text-tags">{{imageTagsString}}}</view>
+        <view class="text-tags">{{imageTagsString}}</view>
     </view>
 
 </template>
