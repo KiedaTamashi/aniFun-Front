@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchBar from "./SearchBar.vue";
+import SearchBar from "../common/SearchBar.vue";
 import fourButton from "./fourButton.vue";
 import rankButton from "./rankButton.vue";
 import discoverContent from "./discoverContent.vue"

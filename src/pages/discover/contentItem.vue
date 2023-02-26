@@ -33,6 +33,7 @@ onMounted(() => {
     align-items: center;
     padding: 0px;
     gap: 10px;
+    flex-wrap: nowrap;
 
     width: 112*2px;
     height: 171*2px;
@@ -76,6 +77,7 @@ onMounted(() => {
         align-items: center;
         text-align: center;
         flex-wrap: nowrap;
+        white-space:nowrap;
     
         /* Text' */
     

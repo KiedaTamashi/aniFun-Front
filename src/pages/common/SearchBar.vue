@@ -5,10 +5,10 @@
 
 <template>
     <view class="search-bar"> 
-        <image class="laying" src="../../assets/images/laying.png"></image>
+        <image class="laying" src="../../assets/images/laying.svg"></image>
         <view class="group-23">
             <image class="icon-search" src="../../assets/images/search.png"></image>
-            <input class="input-search" placeholder="search input"/>
+            <input class="input-search" />
         </view>
         <image class="vector" src="../../assets/images/Vector.png"> </image>
 

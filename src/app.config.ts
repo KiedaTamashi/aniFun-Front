@@ -1,7 +1,7 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
-    'pages/home/home',
+    'pages/homepage/home',
     'pages/discover/discover',
     'pages/myself/myself',
     "pages/community/community"
@@ -10,7 +10,7 @@ export default defineAppConfig({
     "backgroundColor": "#FBF3EF",
     "borderStyle": "white",
     "list": [{
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/homepage/home",
         "iconPath": "assets/icon/home.png",
         "selectedIconPath": "assets/icon/home2.png",
         "text": "",

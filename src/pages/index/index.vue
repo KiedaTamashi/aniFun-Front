@@ -41,7 +41,7 @@ function getWelComePageInfo(loginInfo:{
   }
 
   Taro.reLaunch({
-    url: `../home/home?username=${loginInfo.username}&psd=${loginInfo.psd}`,
+    url: `../homepage/home?username=${loginInfo.username}&psd=${loginInfo.psd}`,
     success: function () {
       // 通过eventChannel向被打开页面传送数据
       console.log("success navigate, login username "+ loginInfo.username)
